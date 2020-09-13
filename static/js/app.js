@@ -2,6 +2,7 @@
 var tableData = data;
 
 // YOUR CODE HERE!
+console.log(tableData);
 
 //Reference the table body
 var tbody = d3.select("tbody");
@@ -13,7 +14,7 @@ tableData.forEach((UFOreport)=>{
     var row = tbody.append("tr");
 
     // Use `Object.entries` for each weather report value
-    object.entries(UFOreport).forEach(([key,value]) =>{
+    Object.entries(UFOreport).forEach(([key,value]) =>{
         
         // Append a cell to the row for each value
         var cell = row.append("td");
