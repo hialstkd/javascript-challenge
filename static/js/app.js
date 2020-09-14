@@ -25,3 +25,47 @@ tableData.forEach((UFOreport)=>{
 });
 
 
+
+//Code for filtering 
+
+//Reference the filter button for an action to happen
+
+var button = d3.select("#filter-btn");
+
+//Creating a function to opperate when the button is pushed
+
+function filter() {
+    
+    //Remove the existing table
+    d3.select("tbody").html("");
+
+    //Prevent from refreshing
+    d3.event.preventDefault();
+
+    //Get the data that a user has put
+
+    input = d3.select("#datetime").property("value");
+
+    //Match with the data
+    matchdata = tableData.filter(date => date.datetime === input);
+
+    console.log(matchdata);
+
+    matchdata.forEach((UFOreport)=>{
+   
+        // Use d3 to append one table row `tr` for each weather report object
+        var row = tbody.append("tr");
+    
+        // Use `Object.entries` for each weather report value
+        Object.entries(UFOreport).forEach(([key,value]) =>{
+            
+            // Append a cell to the row for each value
+            var cell = row.append("td");
+            
+            cell.text(value);
+        });
+    
+    });
+};
+
+button.on("click",filter);
